@@ -1,0 +1,31 @@
+service: serverless-template
+frameworkVersion: '3'
+custom: ${file(./env/${opt:stage, 'dev'}.yml)}
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  profile: ${self:custom.profile}
+  timeout: 30
+  stage: ${self:custom.stage}
+  environment:
+    CORS_ORIGIN: ${self:custom.allow_origin}
+
+functions:
+  users:
+    handler: functions/users/handler.users
+    events:
+      - http:
+          path: /v1/users/{proxy+}
+          method: ANY
+          cors:
+            origin:
+              - ${self:custom.allow_origin}
+            headers:
+              - "*"
+            allowCredentials: false
+            cacheControl: "max-age=600, s-maxage=600, proxy-revalidate"

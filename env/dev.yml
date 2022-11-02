@@ -1,0 +1,11 @@
+# stage
+stage: 'dev'
+
+# profile
+profile: 'personal'
+
+# app name
+app_name_service: ''
+
+# allow origin
+allow_origin: '*'
