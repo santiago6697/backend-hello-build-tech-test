@@ -9,8 +9,12 @@ const getReposByUsername = async (username) => {
         user(login: "${username}") {
           repositories(first: 50, isFork: false) {
             nodes {
+              id
               name
               url
+              stargazerCount 
+              primaryLanguage { name }
+              owner { id }
             }
           }
         }
