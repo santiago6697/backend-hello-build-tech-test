@@ -1,6 +1,6 @@
 const express = require('express');
 const { StatusCodes } = require('http-status-codes');
-const { getRepos } = require('./users_controller');
+const { getRepos, signUp } = require('./users_controller');
 
 const api = express.Router();
 
@@ -23,7 +23,8 @@ api.post('/login', async (req, res, next) => {
 
 api.post('/sign-up', async (req, res, next) => {
     try {
-        res.status(StatusCodes.OK).json({ data: {} });
+        const response = await signUp(req);
+        res.status(StatusCodes.OK).json(response);
     } catch (error) {
         next(error);
     }
