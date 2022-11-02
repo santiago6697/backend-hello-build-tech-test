@@ -1,10 +1,10 @@
 const express = require('express');
 const { StatusCodes } = require('http-status-codes');
-const { getRepos, signUp } = require('./users_controller');
+const { getRepos, signUp, login, putFavs, getFavs } = require('./users_controller');
 
 const api = express.Router();
 
-api.get('/repos/:username', async (req, res, next) => {
+api.get('/:username/repos', async (req, res, next) => {
     try {
         const response = await getRepos(req);
         res.status(StatusCodes.OK).json(response);
@@ -13,9 +13,28 @@ api.get('/repos/:username', async (req, res, next) => {
     }
 });
 
+api.get('/:username/favs', async (req, res, next) => {
+    try {
+        const response = await getFavs(req);
+        res.status(StatusCodes.OK).json(response);
+    } catch (error) {
+        next(error);
+    }
+});
+
+api.put('/:username/favs', async (req, res, next) => {
+    try {
+        const response = await putFavs(req);
+        res.status(StatusCodes.OK).json(response);
+    } catch (error) {
+        next(error);
+    }
+});
+
 api.post('/login', async (req, res, next) => {
     try {
-        res.status(StatusCodes.OK).json({ data: {} });
+        const response = await login(req);
+        res.status(StatusCodes.OK).json(response);
     } catch (error) {
         next(error);
     }

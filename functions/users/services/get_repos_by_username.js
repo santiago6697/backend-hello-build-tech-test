@@ -6,7 +6,7 @@ const GITHUB_GRAPHQL_API_TOKEN = process.env.GITHUB_GRAPHQL_API_TOKEN;
 const getReposByUsername = async (username) => {
     const data = JSON.stringify({
         query: `{
-        user(email: "${username}") {
+        user(login: "${username}") {
           repositories(first: 50, isFork: false) {
             nodes {
               id

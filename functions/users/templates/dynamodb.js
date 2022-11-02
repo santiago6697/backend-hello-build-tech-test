@@ -1,12 +1,29 @@
-const documentTemplate = {
+const putDocumentTemplate = {
     TableName: null,
     Item: {
-        Email: null,
+        Password: null,
         Username: null,
         Favorites: null,
     },
 };
 
+const getDocumentTemplate = {
+    TableName: null,
+    KeyConditionExpression: null,
+    ExpressionAttributeValues: {},
+};
+
+const updateDocumentTemplate = {
+    Key: {},
+    TableName: null,
+    UpdateExpression: null,
+    KeyConditionExpression: null,
+    ExpressionAttributeValues: {},
+    ReturnValues: 'ALL_NEW',
+};
+
 module.exports = {
-    documentTemplate,
+    putDocumentTemplate,
+    getDocumentTemplate,
+    updateDocumentTemplate,
 };
