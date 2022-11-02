@@ -2,10 +2,14 @@
 stage: 'dev'
 
 # profile
-profile: 'personal'
+profile: 'default'
 
 # app name
 app_name_service: ''
 
 # allow origin
 allow_origin: '*'
+
+# github graphql api definitions
+github_graphql_api_url: 'https://api.github.com/graphql'
+github_graphql_api_token: 'ghp_xxxxxxxxxxxxxxxxxxx'

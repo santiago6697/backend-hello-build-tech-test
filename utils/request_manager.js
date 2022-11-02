@@ -1,6 +1,6 @@
-const { StatusCodes } = require('http-status-codes');
 const Axios = require('axios');
-const { ErrorHandler } = require('../middlewares/errorHandlerMiddleware');
+const { StatusCodes } = require('http-status-codes');
+const { HttpError } = require('../classes/HttpError');
 
 const axios = Axios.create({
     timeout: 25000,
@@ -15,26 +15,10 @@ const postRequest = (config) => {
         })
         .catch((error) => {
             console.log('postRequest error:', error);
-            throw new ErrorHandler(StatusCodes.SERVICE_UNAVAILABLE, 'External service unavailable');
-        });
-};
-
-const getRequest = (config) => {
-    const { url, headers } = config;
-    return axios
-        .get(url, headers)
-        .then((response) => {
-            if (response.status === StatusCodes.OK) {
-                return response.data;
-            }
-        })
-        .catch((error) => {
-            console.log('getRequest error:', error);
-            throw new ErrorHandler(StatusCodes.SERVICE_UNAVAILABLE, 'External service unavailable');
+            throw new HttpError(StatusCodes.SERVICE_UNAVAILABLE, 'External service unavailable');
         });
 };
 
 module.exports = {
     postRequest,
-    getRequest,
 };

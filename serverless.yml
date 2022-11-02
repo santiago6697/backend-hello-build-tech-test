@@ -1,4 +1,4 @@
-service: serverless-template
+service: backend-hello-build-tech-test
 frameworkVersion: '3'
 custom: ${file(./env/${opt:stage, 'dev'}.yml)}
 
@@ -14,6 +14,8 @@ provider:
   stage: ${self:custom.stage}
   environment:
     CORS_ORIGIN: ${self:custom.allow_origin}
+    GITHUB_GRAPHQL_API_URL: ${self:custom.github_graphql_api_url}
+    GITHUB_GRAPHQL_API_TOKEN: ${self:custom.github_graphql_api_token}
 
 functions:
   users:
