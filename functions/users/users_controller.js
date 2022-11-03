@@ -47,7 +47,7 @@ const login = async (req) => {
     console.log('login JSON.stringify(document)', JSON.stringify(document));
     const result = await getItem(document);
     console.log('login JSON.stringify(result)', JSON.stringify(result));
-    if (result.Items[0].Password !== req.body.password)
+    if (_.isEmpty(result.Items) || result.Items[0].Password !== req.body.password)
         throw new HttpError(StatusCodes.FORBIDDEN, parseAuthResponse(false));
 
     return parseAuthResponse(true);
