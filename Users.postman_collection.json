@@ -1,0 +1,117 @@
+{
+    "info": {
+        "_postman_id": "8d2170e7-a242-4b31-93ca-961656e13051",
+        "name": "Users",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "19456231"
+    },
+    "item": [
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"username\": \"santiago6697\",\n    \"password\": \"santiago6697@\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{backend-url}}/dev/v1/users/login",
+                    "host": ["{{backend-url}}"],
+                    "path": ["dev", "v1", "users", "login"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Repos",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{backend-url}}/dev/v1/users/octocat/repos/",
+                    "host": ["{{backend-url}}"],
+                    "path": ["dev", "v1", "users", "octocat", "repos", ""]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Favs",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{backend-url}}/dev/v1/users/santiago6697/favs/",
+                    "host": ["{{backend-url}}"],
+                    "path": ["dev", "v1", "users", "santiago6697", "favs", ""]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Put Favs",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\n    {\n            \"id\": \"MDEwOlJlcG9zaXRvcnkxMzM3MzM4MDE=\",\n            \"checked\": true,\n            \"name\": \"DialogFlowFulFillmentTemplate\",\n            \"url\": \"https://github.com/estebance/DialogFlowFulFillmentTemplate\",\n            \"stargazerCount\": 1,\n            \"primaryLanguage\": {\n                \"name\": \"JavaScript\"\n            },\n            \"owner\": {\n                \"id\": \"MDQ6VXNlcjQyNTY4NDM=\"\n            }\n        }\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{backend-url}}/dev/v1/users/santiago6697/favs/",
+                    "host": ["{{backend-url}}"],
+                    "path": ["dev", "v1", "users", "santiago6697", "favs", ""]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Sign Up",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"username\": \"santiago6697\",\n    \"password\": \"santiago6697@\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{backend-url}}/dev/v1/users/sign-up",
+                    "host": ["{{backend-url}}"],
+                    "path": ["dev", "v1", "users", "sign-up"]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "backend-url",
+            "value": "https://yi39jmt8sg.execute-api.us-east-1.amazonaws.com"
+        }
+    ]
+}
