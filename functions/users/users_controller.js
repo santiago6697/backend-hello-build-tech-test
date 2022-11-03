@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const { StatusCodes } = require('http-status-codes');
 const { HttpError } = require('../../classes/HttpError');
 const { putItem, getItem, updateItem } = require('../../utils/dynamodb_manager');
@@ -47,6 +48,7 @@ const login = async (req) => {
     console.log('login JSON.stringify(document)', JSON.stringify(document));
     const result = await getItem(document);
     console.log('login JSON.stringify(result)', JSON.stringify(result));
+    console.log('login _.isEmpty(result.Items)', _.isEmpty(result.Items));
     if (_.isEmpty(result.Items) || result.Items[0].Password !== req.body.password)
         throw new HttpError(StatusCodes.FORBIDDEN, parseAuthResponse(false));
 
